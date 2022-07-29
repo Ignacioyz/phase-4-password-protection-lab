@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # line 4 is the user's request, and then the server's response 
+  # then in the controller we define how the response performs "" relates to action in controller
+  post "/login", to: "sessions#create"
+  post "/signup", to: "users#create"
+  delete "/logout", to: "sessions#destroy"
+  get "/me", to: "users#show"
+
+  resources :sessions, only: [:delete] 
+  resources :users 
 end
